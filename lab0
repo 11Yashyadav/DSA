@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+void main(){
+    int n,element,i,index,temp;
+    int *ptr;
+    printf("Please enter the size of array::");
+    scanf("%d",&n);
+    ptr=(int*)malloc(n*sizeof(int));
+    if(ptr == NULL){
+        printf("\nMemory not allocated\n");
+    } 
+    printf("Please enter the elements in array::");
+    for(i=0;i<n;i++){
+        scanf("%d",&ptr[i]);
+    }
+    printf("\n Printing the element of array::");
+    for(i=0;i<n;i++){
+        printf("%d ",ptr[i]);
+    }
+   printf("\n Please enter the element which we want to enter:::");
+    scanf("%d",&element);
+    ptr = (int *)realloc(ptr,(n+1)*sizeof(int));
+    printf("\n Please enter the index :::");
+    scanf("%d",&index);
+    temp=ptr[index];
+    for(i=n+1;i>index;i--){
+        ptr[i]=ptr[i-1];
+    }
+    ptr[index]=element;
+    printf("\n ---------------printing array after addition of new element-----------------------");
+    for(i=0;i<n+1;i++){
+        printf("%d ",ptr[i]);
+    }
+    printf("------------------ perform deletion opertion --------------------- ");
+    
+}
