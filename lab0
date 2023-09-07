@@ -1,36 +1,73 @@
 #include <stdio.h>
 #include <stdlib.h>
-void main(){
-    int n,element,i,index,temp;
+ int i,index,element,n;
     int *ptr;
+void insertlast();
+void insertindex();
+void deletelast();
+void deleteindex();
+void main(){
     printf("Please enter the size of array::");
     scanf("%d",&n);
     ptr=(int*)malloc(n*sizeof(int));
-    if(ptr == NULL){
-        printf("\nMemory not allocated\n");
-    } 
-    printf("Please enter the elements in array::");
+    printf("\n Please enter the elements in array::");
     for(i=0;i<n;i++){
         scanf("%d",&ptr[i]);
     }
-    printf("\n Printing the element of array::");
-    for(i=0;i<n;i++){
+ //  insertlast();
+ //  insertindex();
+  // deletelast();
+   deleteindex();
+   }
+void insertlast(){
+    printf("\n------------------insert element at last--------------------");
+     printf("\nPlease enter the element which wants to enter::");
+    scanf("%d",&element);
+    ptr=(int*)realloc(ptr,(n+1)*sizeof(int));
+    ptr[n]=element;
+    printf("\n--------------printing array-----------------\n");
+    if(ptr==NULL){
+        printf("Memory is not allocate");
+    }
+    for(i=0;i<(n+1);i++){
         printf("%d ",ptr[i]);
     }
-   printf("\n Please enter the element which we want to enter:::");
+}
+void insertindex(){
+     printf("\nPlease enter the element which wants to enter::");
     scanf("%d",&element);
-    ptr = (int *)realloc(ptr,(n+1)*sizeof(int));
-    printf("\n Please enter the index :::");
+    ptr=(int*)realloc(ptr,(n+1)*sizeof(int));
+    printf("\n------------------insert element at index--------------------");
+    printf("\n please enter the index::");                     //index at which new element insert
     scanf("%d",&index);
-    temp=ptr[index];
-    for(i=n+1;i>index;i--){
+    for(i=n+1;i>=index;i--){
         ptr[i]=ptr[i-1];
     }
     ptr[index]=element;
-    printf("\n ---------------printing array after addition of new element-----------------------");
+    printf("\n--------------printing array-----------------\n");
+    if(ptr==NULL){
+        printf("Memory is not allocate");
+    }
     for(i=0;i<n+1;i++){
         printf("%d ",ptr[i]);
     }
-    printf("------------------ perform deletion opertion --------------------- ");
-    
+}
+void deletelast(){
+printf("\n---------- printing after deleting last element of array---------------\n");
+ptr=(int*)realloc(ptr,(n-1)*sizeof(int));
+for(i=0;i<n;i++){
+    printf("%d ",ptr[i]);
+}
+}
+void deleteindex(){
+printf("Please enter the index of array to delete to element::");
+scanf("%d",&index);
+ptr=(int*)realloc(ptr,(n-1)*sizeof(int));
+for(i=index;i<n;i++){
+    ptr[i]=ptr[i+1];
+}
+printf("\n-------------array after deletion-------------------\n");
+for(i=0;i<n;i++){
+    printf("%d ",ptr[i]);
+}
 }
