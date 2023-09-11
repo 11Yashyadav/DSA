@@ -25,11 +25,12 @@ void insertlast(){
     scanf("%d",&element);
     ptr=(int*)realloc(ptr,(n+1)*sizeof(int));
     ptr[n]=element;
+    n++;
     printf("\n--------------printing array-----------------\n");
     if(ptr==NULL){
         printf("Memory is not allocate");
     }
-    for(i=0;i<(n+1);i++){
+    for(i=0;i<(n);i++){
         printf("%d ",ptr[i]);
     }
 }
@@ -44,17 +45,19 @@ void insertindex(){
         ptr[i]=ptr[i-1];
     }
     ptr[index]=element;
+    n++;
     printf("\n--------------printing array-----------------\n");
     if(ptr==NULL){
         printf("Memory is not allocate");
     }
-    for(i=0;i<n+1;i++){
+    for(i=0;i<n;i++){
         printf("%d ",ptr[i]);
     }
 }
 void deletelast(){
 printf("\n---------- printing after deleting last element of array---------------\n");
 ptr=(int*)realloc(ptr,(n-1)*sizeof(int));
+n--;
 for(i=0;i<n;i++){
     printf("%d ",ptr[i]);
 }
@@ -66,6 +69,7 @@ ptr=(int*)realloc(ptr,(n-1)*sizeof(int));
 for(i=index;i<n;i++){
     ptr[i]=ptr[i+1];
 }
+n--;
 printf("\n-------------array after deletion-------------------\n");
 for(i=0;i<n;i++){
     printf("%d ",ptr[i]);
