@@ -14,18 +14,18 @@ void main(){
     for(i=0;i<n;i++){
         scanf("%d",&ptr[i]);
     }
- //  insertlast();
- //  insertindex();
-  // deletelast();
-   deleteindex();
+insertlast();
+insertindex();
+deletelast();
+deleteindex();
    }
 void insertlast(){
     printf("\n------------------insert element at last--------------------");
      printf("\nPlease enter the element which wants to enter::");
     scanf("%d",&element);
     ptr=(int*)realloc(ptr,(n+1)*sizeof(int));
-    ptr[n]=element;
     n++;
+    ptr[n-1]=element;
     printf("\n--------------printing array-----------------\n");
     if(ptr==NULL){
         printf("Memory is not allocate");
@@ -38,14 +38,14 @@ void insertindex(){
      printf("\nPlease enter the element which wants to enter::");
     scanf("%d",&element);
     ptr=(int*)realloc(ptr,(n+1)*sizeof(int));
+    n++;
     printf("\n------------------insert element at index--------------------");
     printf("\n please enter the index::");                     //index at which new element insert
     scanf("%d",&index);
-    for(i=n+1;i>=index;i--){
+    for(i=n;i>=index;i--){
         ptr[i]=ptr[i-1];
     }
     ptr[index]=element;
-    n++;
     printf("\n--------------printing array-----------------\n");
     if(ptr==NULL){
         printf("Memory is not allocate");
@@ -63,12 +63,12 @@ for(i=0;i<n;i++){
 }
 }
 void deleteindex(){
-printf("Please enter the index of array to delete to element::");
+printf("\nPlease enter the index of array to delete to element::");
 scanf("%d",&index);
-ptr=(int*)realloc(ptr,(n-1)*sizeof(int));
 for(i=index;i<n;i++){
     ptr[i]=ptr[i+1];
 }
+ptr=(int*)realloc(ptr,(n-1)*sizeof(int));
 n--;
 printf("\n-------------array after deletion-------------------\n");
 for(i=0;i<n;i++){
