@@ -55,7 +55,7 @@ void main(){
     }
 void push(){
     if(isfull()==1){
-        printf("\n Stack is full");
+        printf("\n **********************Stack is full*****************");
     }
     if(isfull()!=1){
     obj.top++;
@@ -68,7 +68,7 @@ void push(){
 }
 void pop(){
     if(isempty()==1){
-        printf("Stack is empty");
+        printf("*****************Stack is empty*******************");
     }
     if(isempty()!=1){
     printf("\n %d element is pop",obj.ptr[obj.top]);
@@ -76,7 +76,7 @@ void pop(){
 }
 }
 int peek(){
-    printf("%d",obj.ptr[obj.top]);
+    printf("\n top element is :: %d",obj.ptr[obj.top]);
     return 1;
 }
 void display(){
