@@ -1,0 +1,86 @@
+#include<stdio.h>
+#include<stdlib.h>
+void push();
+void pop();
+void display();
+int peek();
+int isfull();
+int isempty();
+struct stack{
+    int top,size;
+    int *ptr;
+}obj;
+void main(){
+    obj.top=-1;
+    int a;
+    printf("Please enter the size of Stack::");
+    scanf("%d",&obj.size);
+    obj.ptr=(int*)malloc(obj.size*sizeof(int));
+    valueofa :
+        printf("\n PLease enter any value (1 for push  2 for pop 3 for peek 4 for diaplay)");
+        scanf("%d",&a);
+        switch (a){
+        case 1:
+        push();
+        goto valueofa;
+        break;
+        case 2:
+        pop();
+        goto valueofa;
+        break;
+        case 3:
+        peek();
+        goto valueofa;
+        break;
+        case 4:
+        display();
+        goto valueofa;
+        break;
+        default:
+        printf("please enter proper key");
+        break;
+        }
+    }
+    int isfull(){
+        if((obj.size-1)==obj.top)
+        return 1;
+        else
+        return 0;
+    }
+    int isempty(){
+        if(obj.top==-1)
+        return 1;
+        else
+        return 0;
+    }
+void push(){
+    if(isfull()==1){
+        printf("\n Stack is full");
+    }
+    if(isfull()!=1){
+    obj.top++;
+    int element;
+    printf("\n please enter the element ::");
+    scanf("%d",&element);
+    obj.ptr[obj.top]=element;
+    printf("\n push element:: %d",element);
+}
+}
+void pop(){
+    if(isempty()==1){
+        printf("Stack is empty");
+    }
+    if(isempty()!=1){
+    printf("\n %d element is pop",obj.ptr[obj.top]);
+    obj.top--;
+}
+}
+int peek(){
+    printf("%d",obj.ptr[obj.top]);
+    return 1;
+}
+void display(){
+    for(int i=0;i<=obj.top;i++){
+        printf("%d ",obj.ptr[i]);
+    }
+}
