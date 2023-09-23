@@ -76,6 +76,9 @@ void pop(){
 }
 }
 int peek(){
+if(isempty()==1){
+        printf("*****************Stack is empty*******************");
+    }
     printf("\n top element is :: %d",obj.ptr[obj.top]);
     return 1;
 }
