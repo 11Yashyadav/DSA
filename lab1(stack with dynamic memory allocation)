@@ -17,7 +17,7 @@ void main(){
     scanf("%d",&obj.size);
     obj.ptr=(int*)malloc(obj.size*sizeof(int));
     valueofa :
-        printf("\n PLease enter any value (1 for push  2 for pop 3 for peek 4 for diaplay)");
+        printf("\n PLease enter any value (1 for push  2 for pop 3 for peek 4 for diaplay 5 for quit)");
         scanf("%d",&a);
         switch (a){
         case 1:
@@ -35,6 +35,8 @@ void main(){
         case 4:
         display();
         goto valueofa;
+        break;
+        case 5:
         break;
         default:
         printf("please enter proper key");
