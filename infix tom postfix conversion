@@ -1,0 +1,91 @@
+/// Aim:: to implement stack ADT and its allowable operations using dynamic memory allocation
+// 1] push(),pop(),peek()
+// 2] apllication of stack program for Infix-to-postfix conversion
+//
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+void push(char element);
+int isfull();
+int isempty();
+void pop();
+int priority();
+struct stack {
+    int size,top;
+    char *ptr;
+} obj;
+void main()
+{
+    int j=0;
+    obj.size=100;
+    obj.top=-1;
+    obj.ptr=(char*)malloc(obj.size*sizeof(char));
+    char exp[100];
+    char con[100];
+    printf("Please enter the expression for coversion::");
+    scanf("%s",exp);
+    int len=strlen(exp);
+    for(int i=0; exp[i]!='\0'; i++) {
+        if(exp[i]=='(' || exp[i]==')' ||exp[i]=='+' ||exp[i]=='-' ||exp[i]=='*' ||exp[i]=='*' || exp[i]=='^' ) {
+            push(exp[i]);
+        } else if(exp[i]==97 || exp[i]==122 ||exp[i]== 65 || exp[i]==90 || exp[i]==48 ||exp[i]==57) {
+
+            con[j]=exp[i];
+            j++;
+        }
+    }
+    for(int k=0; k<len; k++) {
+        printf("%c",con[k]);
+    }
+}
+int priority(){
+    switch(value of a):
+    case 1:                     // for (
+    push('(');
+    case 2:
+    push('+');
+    case 3:
+    push('-');
+    case 4:
+    push('*');
+    case 5:
+    push('/');
+}
+int isfull()
+{
+    if((obj.size-1)==obj.top)
+        return 1;
+    else
+        return 0;
+}
+int isempty()
+{
+    if(obj.top==-1)
+        return 1;
+    else
+        return 0;
+}
+void push(char element)
+{
+    obj.top++;
+    obj.ptr[obj.top]= element;
+    printf("\n push element:: %d",element);
+}
+void pop()
+{
+    if(isempty()==1) {
+        printf("*****************Stack is empty*******************");
+    }
+    if(isempty()!=1) {
+        printf("\n %d element is pop",obj.ptr[obj.top]);
+        obj.top--;
+    }
+}
+int peek()
+{
+    if(isempty()==1) {
+        printf("*****************Stack is empty*******************");
+    }
+    printf("\n top element is :: %d",obj.ptr[obj.top]);
+    return 1;
+}
