@@ -1,0 +1,81 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+void push(char element);
+void pop();
+struct stack{
+    int size,top;
+    char *ptr;
+}obj;
+void main(){
+    obj.size=10;
+    obj.top=-1;
+    obj.ptr=(char*)malloc(obj.size*sizeof(char));
+    char exp[10];
+    printf("\nPlease enter the Expression ::");
+    scanf("%s",&exp);
+    //printf("%s",exp);
+    int leng;
+    leng=strlen(exp);
+    //printf("%d",leng);
+    int i=0;
+    while(exp[i]!='\0'){
+        //if(exp[i]>=65 && exp[i]<=90 || exp[i]>=97 && exp[i]<=122 ||exp[i]>=48 && exp[i]<=57)
+        if(exp[i]=='('){
+            push(exp[i]);
+        }
+        if(exp[i]=='['){
+            push(exp[i]);
+        }
+        if(exp[i]=='{'){
+            push(exp[i]);
+        }
+        if(exp[i]==')'){
+            if(obj.ptr[obj.top]=='('){
+                pop();
+            }
+            else {
+                push(exp[i]);
+            }
+        }
+        if(exp[i]==']'){
+            if(obj.ptr[obj.top]=='['){
+                pop();
+            }
+            else {
+                push(exp[i]);
+            }
+        }
+        if(exp[i]=='}'){
+            if(obj.ptr[obj.top]=='{'){
+                pop();
+            }
+            else {
+                push(exp[i]);
+            }
+        }
+        i++;
+    }
+
+    if(obj.top==-1){
+        printf("\n Balanced Expression");
+        }
+    else{
+        printf("\nNot Balanced");
+    }
+}
+void push(char element){
+    obj.top++;
+    obj.ptr[obj.top]=element;
+    printf("\n%c element is push in stack",element);
+}
+void pop(){
+    if(obj.top==-1){
+        printf("************ Stack is empty ****************");
+    }
+    else{
+        printf("\nelement is pop from stack");
+        obj.top--;
+
+    }
+}
