@@ -1,0 +1,107 @@
+#include<stdio.h>
+#include<stdlib.h>
+void enqueue(int ele);
+int isEmpty();
+int isFull();
+void dequeue();
+int peek();
+void display();
+struct queue{
+    int front,rear;
+    int *ptr;
+    int size;
+}obj;
+void main(){
+    int a,elem;
+    obj.rear=-1;
+    obj.front=-1;
+    printf("\nPlease enter the size of Queue::");
+    scanf("%d",&obj.size);
+    obj.ptr=(int*)malloc(obj.size* sizeof(int));
+    valueofa :
+    printf("\nPlease enter (1 for enqueue) ( 2 for dequeue) (3 for peek) (4 for display)(5 for Quit) ::");
+    scanf("%d",&a);
+    switch (a) {
+        case 1:
+        printf("Please enter the element in Queue ::");
+        scanf("%d",&elem);
+        enqueue(elem);
+        goto valueofa;
+        break;
+        case 2:
+        dequeue();
+        goto valueofa;
+        break;
+        case 3:
+        printf("%d",peek());
+        goto valueofa;
+        break;
+        case 4:
+        display();
+        goto valueofa;
+        break;
+        case 5:
+        break;
+    }
+}
+int isEmpty(){
+    if((obj.rear==-1 && obj.front==-1)&&(obj.front>obj.rear)){
+        return 1;
+    }
+    else 
+    return -1;
+}
+int isFull(){
+    if(obj.rear==(obj.size - 1) && obj.front==0){
+        return 1;
+    }
+    else 
+    return -1;
+}
+void enqueue(int ele){
+    if(isFull() == 1){
+        printf("\n**************************Queue is full ************************");
+    }
+    else {
+        if(obj.rear==-1 && obj.front==-1){
+            obj.rear++;
+            obj.front++;
+            obj.ptr[obj.rear]=ele;
+            printf("\n%d element is added to queue", obj.ptr[obj.rear]);
+        }
+        else {
+            obj.rear++;
+            obj.ptr[obj.rear]=ele;
+            printf("\n%d element is added to queue",obj.ptr[obj.rear]);
+        }
+    }
+}
+void dequeue(){
+    if(isEmpty() == 1){
+        printf("\n**************************Queue is empty ************************");
+    }
+    else{
+        printf("%d element is deleted from queue",obj.ptr[obj.front]);
+        obj.front++;
+    }
+}
+int peek(){
+    if(isEmpty() == 1){
+        printf("\n**************************Queue is empty ************************");
+        return -1;
+    }
+    else{
+        return obj.ptr[obj.front];
+    }
+}
+void display(){
+    int i=0;
+    if(isEmpty()==1){
+        printf("/n******************************Queue is full *****************************");
+    }
+    else{
+    for(int i=obj.front;i<=obj.rear;i++){
+        printf("%d ",obj.ptr[i]);
+    }
+    }
+}
