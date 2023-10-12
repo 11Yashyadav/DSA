@@ -45,7 +45,7 @@ void main(){
     }
 }
 int isEmpty(){
-    if((obj.rear==-1 && obj.front==-1)&&(obj.front>obj.rear)){
+    if((obj.rear==-1 && obj.front==-1)|| (obj.front>obj.rear)){
         return 1;
     }
     else 
@@ -97,7 +97,7 @@ int peek(){
 void display(){
     int i=0;
     if(isEmpty()==1){
-        printf("/n******************************Queue is full *****************************");
+        printf("\n******************************Queue is empty *****************************");
     }
     else{
     for(int i=obj.front;i<=obj.rear;i++){
