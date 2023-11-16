@@ -1,0 +1,31 @@
+// Shell Sort in C programming
+
+#include <stdio.h>
+void shellSort(int array[], int n) {
+  int interval,i;
+  for (interval = n / 2; interval > 0; interval /= 2) {
+    for ( i = interval; i < n; i += 1) {
+      int temp = array[i];
+      int j;
+      for (j = i; j >= interval && array[j - interval] > temp; j -= interval) {
+        array[j] = array[j - interval];
+      }
+      array[j] = temp;
+    }
+  }
+}
+void printArray(int array[], int size) {
+  int i;
+  for ( i = 0; i < size; ++i) {
+    printf("%d  ", array[i]);
+  }
+  printf("\n");
+}
+
+int main() {
+  int data[] = {8,4,2,3,5,6,7,1,9};
+  int size = sizeof(data) / sizeof(data[0]);
+  shellSort(data, size);
+  printf("Sorted array: \n");
+  printArray(data, size);
+}
