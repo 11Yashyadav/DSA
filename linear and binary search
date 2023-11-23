@@ -1,0 +1,36 @@
+// Linear search
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+void linear_search(int arr[], int data);
+void linear_search(int arr[], int data){
+    int n=sizeof(arr);
+    int i=0;
+    for(i=0;i<n;i++){
+        if(arr[i]==data){
+          printf("\n %d is present at %d index",data,i);
+          return ;
+        }
+       
+    }
+     printf("\nNo such element in list");
+    
+} 
+int main(){
+    int size;
+    int *ptr;
+    printf("Please enter the size of array ::");
+    scanf("%d",&size);
+    ptr=(int*)malloc(size*sizeof(int));
+    int arr[size];
+    int i;
+    printf("\n Please enter the element in array ::");
+    for(int i=0;i<size;i++){
+        scanf("%d",&arr[i]);
+    }
+    int data;
+    printf("\n Please enter the element which we want to search in list::");
+    scanf("%d",&data);
+    linear_search(arr,data);
+return 0;
+}
